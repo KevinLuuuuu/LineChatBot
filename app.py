@@ -8,27 +8,81 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from fsm import TocMachine
-from utils import send_text_message
+from utils import send_text_message, send_button_message
 
 load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2"],
+    states=[
+    "user", "menu",
+    "show_youtube_video", 
+    "water", "input_weight", "water_volume", "precautions",  
+    "feed", "input_location", "pet_shop", "input_age", "feed_amount",
+    "grass", "grass_amount", 
+    "about_rabbit", "diet", "body_language", "trivia",
+    "ptt"],
+
     transitions=[
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
-        },
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
-        },
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
+
+    {'trigger': 'advance', 'source': 'user', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
+
+    {'trigger': 'advance', 'source': 'menu', 'dest': 'ptt', 'conditions': 'is_going_to_ptt'},
+
+    {'trigger': 'advance', 'source': 'menu', 'dest': 'show_youtube_video', 'conditions': 'is_going_to_show_youtube_video'},
+
+    {'trigger': 'advance', 'source': 'menu', 'dest': 'water', 'conditions': 'is_going_to_water'},
+    {'trigger': 'advance', 'source': 'water', 'dest': 'input_weight', 'conditions': 'is_going_to_input_weight'},
+    {'trigger': 'advance', 'source': 'input_weight', 'dest': 'water_volume', 'conditions': 'is_going_to_water_volume'},
+    {'trigger': 'advance', 'source': 'water', 'dest': 'precautions', 'conditions': 'is_going_to_precautions'},
+    {'trigger': 'advance', 'source': 'water_volume', 'dest': 'precautions', 'conditions': 'is_going_to_precautions'},
+
+    {'trigger': 'advance', 'source': 'menu', 'dest': 'feed', 'conditions': 'is_going_to_feed'},
+    {'trigger': 'advance', 'source': 'feed', 'dest': 'precautions', 'conditions': 'is_going_to_precautions'},
+    {'trigger': 'advance', 'source': 'feed', 'dest': 'input_age', 'conditions': 'is_going_to_input_age'},
+    {'trigger': 'advance', 'source': 'input_age', 'dest': 'input_weight', 'conditions': 'is_going_to_input_weight'},
+    {'trigger': 'advance', 'source': 'input_weight', 'dest': 'feed_amount', 'conditions': 'is_going_to_feed_amount'},
+    {'trigger': 'advance', 'source': 'feed_amount', 'dest': 'precautions', 'conditions': 'is_going_to_precautions'},
+
+    {'trigger': 'advance', 'source': 'feed', 'dest': 'input_location', 'conditions': 'is_going_to_input_location'},
+    {'trigger': 'advance', 'source': 'input_location', 'dest': 'pet_shop', 'conditions': 'is_going_to_pet_shop'},
+    {'trigger': 'advance', 'source': 'pet_shop', 'dest': 'input_location', 'conditions': 'is_going_to_input_location'},  
+
+    {'trigger': 'advance', 'source': 'menu', 'dest': 'grass', 'conditions': 'is_going_to_grass'},
+    {'trigger': 'advance', 'source': 'grass', 'dest': 'input_age', 'conditions': 'is_going_to_input_age'},
+    {'trigger': 'advance', 'source': 'input_age', 'dest': 'grass_amount', 'conditions': 'is_going_to_grass_amount'},
+
+    {'trigger': 'advance', 'source': 'grass', 'dest': 'precautions', 'conditions': 'is_going_to_precautions'},
+    {'trigger': 'advance', 'source': 'grass_amount', 'dest': 'precautions', 'conditions': 'is_going_to_precautions'},
+
+    {'trigger': 'advance', 'source': 'menu', 'dest': 'about_rabbit', 'conditions': 'is_going_to_about_rabbit'},
+    {'trigger': 'advance', 'source': 'about_rabbit', 'dest': 'diet', 'conditions': 'is_going_to_diet'},
+    {'trigger': 'advance', 'source': 'diet', 'dest': 'about_rabbit', 'conditions': 'is_going_to_about_rabbit'},
+    {'trigger': 'advance', 'source': 'about_rabbit', 'dest': 'body_language', 'conditions': 'is_going_to_body_language'},
+    {'trigger': 'advance', 'source': 'body_language', 'dest': 'about_rabbit', 'conditions': 'is_going_to_about_rabbit'},
+    {'trigger': 'advance', 'source': 'about_rabbit', 'dest': 'trivia', 'conditions': 'is_going_to_trivia'},
+    {'trigger': 'advance', 'source': 'trivia', 'dest': 'about_rabbit', 'conditions': 'is_going_to_about_rabbit'},
+
+    {'trigger': 'advance', 'source': 'diet', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
+    {'trigger': 'advance', 'source': 'body_language', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
+    {'trigger': 'advance', 'source': 'trivia', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
+    {'trigger': 'advance', 'source': 'water_volume', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
+    {'trigger': 'advance', 'source': 'feed_amount', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
+    {'trigger': 'advance', 'source': 'grass_amount', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
+
+    {'trigger': 'advance', 'source': 'water', 'dest': 'menu', 'conditions': 'is_going_to_menu'}, 
+    {'trigger': 'advance', 'source': 'feed', 'dest': 'menu', 'conditions': 'is_going_to_menu'}, 
+    {'trigger': 'advance', 'source': 'grass', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
+    {'trigger': 'advance', 'source': 'pet_shop', 'dest': 'menu', 'conditions': 'is_going_to_menu'},   
+
+        {"trigger": "go_back", "source": [
+        "menu"
+        "show_youtube_video", 
+        "water", "input_weight", "water_volume", "precautions",  
+        "feed", "input_location", "pet_shop", "input_age", "feed_amount",
+        "grass", "grass_amount", 
+        "about_rabbit", "diet", "body_language", "trivia",
+        "ptt"], "dest": "user"},
     ],
     initial="user",
     auto_transitions=False,
@@ -104,7 +158,7 @@ def webhook_handler():
         print(f"REQUEST BODY: \n{body}")
         response = machine.advance(event)
         if response == False:
-            send_text_message(event.reply_token, "Not Entering any State")
+            send_text_message(event.reply_token, "請依照上面的指示或按鈕輸入哦 ~")
 
     return "OK"
 
@@ -116,5 +170,8 @@ def show_fsm():
 
 
 if __name__ == "__main__":
+    #show_fsm()
+    machine.get_graph().draw("fsm.png", prog="dot", format="png")
     port = os.environ.get("PORT", 8000)
     app.run(host="0.0.0.0", port=port, debug=True)
+
