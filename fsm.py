@@ -80,28 +80,27 @@ class TocMachine(GraphMachine):
                 url.append('https://www.ptt.cc'+ a_item.get('href'))
         sequences = [0, 1, 2, 3, 4]
         for i in sequences:
-            message['contents'][i]['body']['contents'][0]['action']['uri'] = url[i]
-            message['contents'][i]['body']['contents'][0]['action']['label'] = title[i]
+            message['contents'][i]['body']['contents'][0]['action']['uri'] = url[len(url) - 5 - i]
+            message['contents'][i]['body']['contents'][0]['action']['label'] = title[len(title) - 5 - i]
         message_to_reply = FlexSendMessage("PTT", message)
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, message_to_reply)
         self.go_back()
     
 
-    def is_going_to_show_youtube_video(self, event):
+    def is_going_to_show_fsm(self, event):
         text = event.message.text
-        if(text == "影片"):
+        if(text == "fsm"):
             return True
         else: 
             return False
 
-    def on_enter_show_youtube_video(self, event):
-        """print("I'm entering state1")
-
+    def on_enter_show_fsm(self, event):
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state1")"""
-        """爬蟲YT"""
-        send_text_message(event.reply_token, '影片')
+        message = box_message.show_fsm
+        message_to_reply = FlexSendMessage("fsm圖片", message)
+        line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
+        line_bot_api.reply_message(reply_token, message_to_reply)
         self.go_back()
 
     def is_going_to_water(self, event):

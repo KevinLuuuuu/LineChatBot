@@ -130,6 +130,32 @@ main_menu = {
           }
         ]
       }
+    },
+    {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "size": "full",
+        "aspectRatio": "20:20",
+        "aspectMode": "cover",
+        "url": "https://i.imgur.com/506mkPO.png"
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "message",
+              "text": "fsm",
+              "label": "fsm圖片"
+            }
+          }
+        ]
+      }
     }
   ]
 }
@@ -893,4 +919,47 @@ show_ptt = {
       }
     }
   ]
+}
+
+show_fsm = {
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://i.imgur.com/jNLAh1l.png",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover"
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "點我查看fsm圖片",
+          "uri": "https://i.imgur.com/mjphDWB.png"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "message",
+          "label": "回主選單",
+          "text": "主選單"
+        }
+      },
+      {
+        "type": "spacer",
+        "size": "sm"
+      }
+    ],
+    "flex": 0
+  }
 }

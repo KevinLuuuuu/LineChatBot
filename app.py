@@ -16,7 +16,7 @@ load_dotenv()
 machine = TocMachine(
     states=[
     "user", "menu",
-    "show_youtube_video", 
+    "show_fsm", 
     "water", "input_weight", "water_volume", "precautions",  
     "feed", "input_location", "pet_shop", "input_age", "feed_amount",
     "grass", "grass_amount", 
@@ -29,7 +29,7 @@ machine = TocMachine(
 
     {'trigger': 'advance', 'source': 'menu', 'dest': 'ptt', 'conditions': 'is_going_to_ptt'},
 
-    {'trigger': 'advance', 'source': 'menu', 'dest': 'show_youtube_video', 'conditions': 'is_going_to_show_youtube_video'},
+    {'trigger': 'advance', 'source': 'menu', 'dest': 'show_fsm', 'conditions': 'is_going_to_show_fsm'},
 
     {'trigger': 'advance', 'source': 'menu', 'dest': 'water', 'conditions': 'is_going_to_water'},
     {'trigger': 'advance', 'source': 'water', 'dest': 'input_weight', 'conditions': 'is_going_to_input_weight'},
@@ -70,19 +70,26 @@ machine = TocMachine(
     {'trigger': 'advance', 'source': 'feed_amount', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
     {'trigger': 'advance', 'source': 'grass_amount', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
 
+    {'trigger': 'advance', 'source': 'show_fsm', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
     {'trigger': 'advance', 'source': 'water', 'dest': 'menu', 'conditions': 'is_going_to_menu'}, 
     {'trigger': 'advance', 'source': 'feed', 'dest': 'menu', 'conditions': 'is_going_to_menu'}, 
     {'trigger': 'advance', 'source': 'grass', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
-    {'trigger': 'advance', 'source': 'pet_shop', 'dest': 'menu', 'conditions': 'is_going_to_menu'},   
+    {'trigger': 'advance', 'source': 'pet_shop', 'dest': 'menu', 'conditions': 'is_going_to_menu'}, 
 
-        {"trigger": "go_back", "source": [
-        "menu"
-        "show_youtube_video", 
-        "water", "input_weight", "water_volume", "precautions",  
-        "feed", "input_location", "pet_shop", "input_age", "feed_amount",
-        "grass", "grass_amount", 
-        "about_rabbit", "diet", "body_language", "trivia",
-        "ptt"], "dest": "user"},
+    {"trigger": "go_back", "source": [
+    "menu",
+    "show_fsm",
+    "precautions",  
+    "ptt"], "dest": "user"},
+        #{"trigger": "go_back", "source": [
+        #"menu",
+        #"show_fsm",
+        #"water", "input_weight", "water_volume", "precautions",  
+        #"feed", "input_location", "pet_shop", "input_age", "feed_amount",
+        #"grass", "grass_amount", 
+        #"about_rabbit", "diet", "body_language", "trivia",
+        #"ptt"], "dest": "user"},
+
     ],
     initial="user",
     auto_transitions=False,
