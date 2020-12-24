@@ -79,22 +79,11 @@ class TocMachine(GraphMachine):
             return False
 
     def on_enter_show_fsm(self, event):
-        '''reply_token = event.reply_token
+        reply_token = event.reply_token
         message = box_message.show_fsm
         message_to_reply = FlexSendMessage("fsm圖片", message)
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
-        line_bot_api.reply_message(reply_token, message_to_reply)'''
-        reply_token = params['events'][0]['replyToken']
-        
-        # 設定回覆訊息
-        message = {
-        "type": "image",
-        "originalContentUrl": "https://i.imgur.com/mjphDWB.png",
-        "previewImageUrl": "https://i.imgur.com/mjphDWB.png"
-        }
-
-        # 傳送訊息
-        line.reply_message(reply_token, message)
+        line_bot_api.reply_message(reply_token, message_to_reply)
         self.go_back()
 
     def is_going_to_water(self, event):
