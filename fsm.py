@@ -81,14 +81,11 @@ class TocMachine(GraphMachine):
     def on_enter_show_fsm(self, event):
         image_message = ImageSendMessage(
         original_content_url='https://i.imgur.com/mjphDWB.png',
-        preview_image_url='https://i.imgur.com/mjphDWB.png'
-        )
+        preview_image_url='https://i.imgur.com/mjphDWB.png')
         reply_token = event.reply_token
-        message = box_message.show_fsm
-        message_to_reply = FlexSendMessage("fsm圖片", message)
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, image_message)
-        #line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://i.imgur.com/mjphDWB.png', preview_image_url='https://i.imgur.com/mjphDWB.png'))
+
         self.go_back()
 
     def is_going_to_water(self, event):
