@@ -138,7 +138,7 @@ main_menu = {
         "size": "full",
         "aspectRatio": "20:20",
         "aspectMode": "cover",
-        "url": "https://i.imgur.com/506mkPO.png"
+        "url": "https://i.imgur.com/u0xiL42.png"
       },
       "footer": {
         "type": "box",

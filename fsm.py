@@ -25,23 +25,6 @@ def check_float(potential_float):
     except ValueError:
         return False
 
-def ptt_crawler():
-    url="https://www.ptt.cc/bbs/rabbit/index.html"
-    r = requests.get(url)
-    soup = BeautifulSoup(r.text, "html.parser")
-    results = soup.select("div.title")
-    title = []
-    url = []
-    for item in results:
-        a_item = item.select_one("a")
-        title.append(item.text)
-        #title = item.text
-        if a_item:
-            url.append('https://www.ptt.cc'+ a_item.get('href'))
-            #print(title, 'https://www.ptt.cc'+ a_item.get('href'))
-    print(title)
-    print(url)
-
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
@@ -96,11 +79,22 @@ class TocMachine(GraphMachine):
             return False
 
     def on_enter_show_fsm(self, event):
-        reply_token = event.reply_token
+        '''reply_token = event.reply_token
         message = box_message.show_fsm
         message_to_reply = FlexSendMessage("fsm圖片", message)
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
-        line_bot_api.reply_message(reply_token, message_to_reply)
+        line_bot_api.reply_message(reply_token, message_to_reply)'''
+        reply_token = params['events'][0]['replyToken']
+        
+        # 設定回覆訊息
+        message = {
+        "type": "image",
+        "originalContentUrl": "https://i.imgur.com/mjphDWB.png",
+        "previewImageUrl": "https://i.imgur.com/mjphDWB.png"
+        }
+
+        # 傳送訊息
+        line.reply_message(reply_token, message)
         self.go_back()
 
     def is_going_to_water(self, event):
@@ -117,7 +111,7 @@ class TocMachine(GraphMachine):
         line_bot_api.reply_message(reply_token, message_to_reply)
 
     def is_going_to_input_weight(self, event):
-        global age, feed_or_water_or_grass #飼料要的
+        global age, feed_or_water_or_grass
         text = event.message.text
         if(feed_or_water_or_grass == '水' and text == "水量"):
             return True
