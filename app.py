@@ -81,15 +81,6 @@ machine = TocMachine(
     "show_fsm",
     "precautions",  
     "ptt"], "dest": "user"},
-        #{"trigger": "go_back", "source": [
-        #"menu",
-        #"show_fsm",
-        #"water", "input_weight", "water_volume", "precautions",  
-        #"feed", "input_location", "pet_shop", "input_age", "feed_amount",
-        #"grass", "grass_amount", 
-        #"about_rabbit", "diet", "body_language", "trivia",
-        #"ptt"], "dest": "user"},
-
     ],
     initial="user",
     auto_transitions=False,

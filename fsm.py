@@ -80,8 +80,8 @@ class TocMachine(GraphMachine):
 
     def on_enter_show_fsm(self, event):
         image_message = ImageSendMessage(
-        original_content_url='https://i.imgur.com/mjphDWB.png',
-        preview_image_url='https://i.imgur.com/mjphDWB.png')
+        original_content_url='https://i.imgur.com/jmDrMlZ.png',
+        preview_image_url='https://i.imgur.com/jmDrMlZ.png')
         reply_token = event.reply_token
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, image_message)
@@ -310,17 +310,3 @@ class TocMachine(GraphMachine):
         index3 = index3 + 1
         if(index3 == 11):
             index3 = 0
-
-
-    '''def on_exit_state1(self):
-        print("Leaving state1")
-
-    def on_enter_state2(self, event):
-        print("I'm entering state2")
-
-        reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger state2")
-        self.go_back()
-
-    def on_exit_state2(self):
-        print("Leaving state2")'''
