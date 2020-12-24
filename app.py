@@ -75,6 +75,7 @@ machine = TocMachine(
     {'trigger': 'advance', 'source': 'feed', 'dest': 'menu', 'conditions': 'is_going_to_menu'}, 
     {'trigger': 'advance', 'source': 'grass', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
     {'trigger': 'advance', 'source': 'pet_shop', 'dest': 'menu', 'conditions': 'is_going_to_menu'}, 
+    {'trigger': 'advance', 'source': 'about_rabbit', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
 
     {"trigger": "go_back", "source": [
     "menu",
