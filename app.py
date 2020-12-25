@@ -63,12 +63,12 @@ machine = TocMachine(
     {'trigger': 'advance', 'source': 'about_rabbit', 'dest': 'trivia', 'conditions': 'is_going_to_trivia'},
     {'trigger': 'advance', 'source': 'trivia', 'dest': 'about_rabbit', 'conditions': 'is_going_to_about_rabbit'},
 
-    {'trigger': 'advance', 'source': 'diet', 'dest': 'body_language', 'conditions': 'is_going_to_menu'},
-    {'trigger': 'advance', 'source': 'diet', 'dest': 'trivia', 'conditions': 'is_going_to_menu'},
-    {'trigger': 'advance', 'source': 'body_language', 'dest': 'diet', 'conditions': 'is_going_to_menu'},
-    {'trigger': 'advance', 'source': 'body_language', 'dest': 'trivia', 'conditions': 'is_going_to_menu'},
-    {'trigger': 'advance', 'source': 'trivia', 'dest': 'diet', 'conditions': 'is_going_to_menu'},
-    {'trigger': 'advance', 'source': 'trivia', 'dest': 'body_language', 'conditions': 'is_going_to_menu'},
+    {'trigger': 'advance', 'source': 'diet', 'dest': 'body_language', 'conditions': 'is_going_to_body_language'},
+    {'trigger': 'advance', 'source': 'diet', 'dest': 'trivia', 'conditions': 'is_going_to_trivia'},
+    {'trigger': 'advance', 'source': 'body_language', 'dest': 'diet', 'conditions': 'is_going_to_diet'},
+    {'trigger': 'advance', 'source': 'body_language', 'dest': 'trivia', 'conditions': 'is_going_to_trivia'},
+    {'trigger': 'advance', 'source': 'trivia', 'dest': 'diet', 'conditions': 'is_going_to_diet'},
+    {'trigger': 'advance', 'source': 'trivia', 'dest': 'body_language', 'conditions': 'is_going_to_body_language'},
 
     {'trigger': 'advance', 'source': 'diet', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
     {'trigger': 'advance', 'source': 'body_language', 'dest': 'menu', 'conditions': 'is_going_to_menu'},
