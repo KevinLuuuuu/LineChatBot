@@ -80,8 +80,8 @@ class TocMachine(GraphMachine):
 
     def on_enter_show_fsm(self, event):
         image_message = ImageSendMessage(
-        original_content_url='https://i.imgur.com/D47m9md.png',
-        preview_image_url='https://i.imgur.com/D47m9md.png')
+        original_content_url='https://i.imgur.com/KEBltE5.png',
+        preview_image_url='https://i.imgur.com/KEBltE5.png')
         reply_token = event.reply_token
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, image_message)
