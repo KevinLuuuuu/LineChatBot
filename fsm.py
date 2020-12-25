@@ -284,7 +284,7 @@ class TocMachine(GraphMachine):
     
     def on_enter_diet(self, event):
         global index1
-        send_text_message(event.reply_token, about_rabbit_template.diet_dict[index1]+"\n\n輸入『主選單』可回主選單\n輸入『其他』可再看其他有關兔兔的知識喔")
+        send_text_message(event.reply_token, about_rabbit_template.diet_dict[index1]+"\n\n輸入『主選單』可回主選單\n輸入『其他』或點選選單中其他的項目可再看其他有關兔兔的知識喔")
         index1 = index1 + 1
         if(index1 == 11):
             index1 = 0
@@ -295,7 +295,7 @@ class TocMachine(GraphMachine):
     
     def on_enter_body_language(self, event):
         global index2
-        send_text_message(event.reply_token, about_rabbit_template.body_language_dict[index2]+"\n\n輸入『主選單』可回主選單\n輸入『其他』可再看其他有關兔兔的知識喔")
+        send_text_message(event.reply_token, about_rabbit_template.body_language_dict[index2]+"\n\n輸入『主選單』可回主選單\n輸入『其他』或點選選單中其他的項目可再看其他有關兔兔的知識喔")
         index2 = index2 + 1
         if(index2 == 12):
             index2 = 0
@@ -306,7 +306,7 @@ class TocMachine(GraphMachine):
 
     def on_enter_trivia(self, event):
         global index3
-        send_text_message(event.reply_token, about_rabbit_template.trivia_dict[index3]+"\n\n輸入『主選單』可回主選單\n輸入『其他』可再看其他有關兔兔的知識喔")
+        send_text_message(event.reply_token, about_rabbit_template.trivia_dict[index3]+"\n\n輸入『主選單』可回主選單\n輸入『其他』或點選選單中其他的項目可再看其他有關兔兔的知識喔")
         index3 = index3 + 1
         if(index3 == 11):
             index3 = 0
