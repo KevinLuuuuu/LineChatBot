@@ -63,8 +63,8 @@ class TocMachine(GraphMachine):
                 url.append('https://www.ptt.cc'+ a_item.get('href'))
         sequences = [0, 1, 2, 3, 4]
         for i in sequences:
-            message['contents'][i]['body']['contents'][0]['action']['uri'] = url[len(url) - 5 - i]
-            message['contents'][i]['body']['contents'][0]['action']['label'] = title[len(title) - 5 - i]
+            message['contents'][i]['body']['contents'][0]['action']['uri'] = url[i]
+            message['contents'][i]['body']['contents'][0]['action']['label'] = title[i]
         message_to_reply = FlexSendMessage("PTT", message)
         line_bot_api = LineBotApi( os.getenv('LINE_CHANNEL_ACCESS_TOKEN') )
         line_bot_api.reply_message(reply_token, message_to_reply)
