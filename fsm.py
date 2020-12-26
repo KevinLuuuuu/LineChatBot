@@ -58,8 +58,9 @@ class TocMachine(GraphMachine):
         url = []
         for item in results:
             a_item = item.select_one("a")
-            title.append(item.text)
+            #title.append(item.text)
             if a_item:
+                title.append(item.text)
                 url.append('https://www.ptt.cc'+ a_item.get('href'))
         sequences = [0, 1, 2, 3, 4]
         for i in sequences:
