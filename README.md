@@ -1,159 +1,117 @@
 # TOC Project 2020
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/dc7fa47fcd809b99d087/maintainability)](https://codeclimate.com/github/NCKU-CCS/TOC-Project-2020/maintainability)
+## 動機
 
-[![Known Vulnerabilities](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020/badge.svg)](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020)
+在這個時代，幾乎人人家裡都會養寵物，而在台灣的飼主們的寵物也以養狗或養貓為主，養兔子的人比例其實不多。也因此許多飼主們可能不清楚養兔子的正確觀念，例如各年齡的兔子應該吃什麼樣的草，或是飼料該給多少的量等等，於是由作者我這個現任兔奴來利用這個聊天機器人提供正確的資訊給大家，目的是讓每個家裡的兔兔都能得到好好的照顧 (●°u°●)」  
+而這裡除了有告訴你怎麼好好的養一隻兔子之外，也提供了許多有關兔兔的有趣知識，想讓大家去了解哦。  
 
+## 基本資訊
 
-Template Code for TOC Project 2020
+**兔兔小幫手**
 
-A Line bot based on a finite state machine
+<img src="https://i.imgur.com/UXlmFyn.png" alt="alt text" width="200" height="200">
 
-More details in the [Slides](https://hackmd.io/@TTW/ToC-2019-Project#) and [FAQ](https://hackmd.io/s/B1Xw7E8kN)
+**QR code**
 
-## Setup
+<img src="https://i.imgur.com/IQBAXzX.png" alt="alt text" width="200" height="200">
 
-### Prerequisite
-* Python 3.6
-* Pipenv
-* Facebook Page and App
-* HTTPS Server
+**功能選單**
 
-#### Install Dependency
-```sh
-pip3 install pipenv
+<img src="https://i.imgur.com/P6vR1GN.png" alt="alt text" width="700" height="300">
+<img src="https://i.imgur.com/Txsf2bP.png" alt="alt text" width="700" height="300">
 
-pipenv --three
+## 功能介紹
 
-pipenv install
+### 關於飼料
 
-pipenv shell
-```
+<img src="https://i.imgur.com/vBG74tP.jpg" alt="alt text"  width="394" height="700">
 
-* pygraphviz (For visualizing Finite State Machine)
-    * [Setup pygraphviz on Ubuntu](http://www.jianshu.com/p/a3da7ecc5303)
-	* [Note: macOS Install error](https://github.com/pygraphviz/pygraphviz/issues/100)
+**兔兔一天飼料量**  
+- 輸入兔兔『年齡』、『體重』  
+- 可提供兔兔適合吃哪種飼料以及一天的飼料量應為多少  
+<img src="https://i.imgur.com/VFLkj4q.jpg" alt="alt text" width="394" height="700">
 
+**飼料沒了可以去哪買**  
+- 輸入『地點』  
+- 可提供連結搜尋附近寵物店  
+<img src="https://i.imgur.com/A8gRDfy.jpg" alt="alt text" width="394" height="700">
 
-#### Secret Data
-You should generate a `.env` file to set Environment Variables refer to our `.env.sample`.
-`LINE_CHANNEL_SECRET` and `LINE_CHANNEL_ACCESS_TOKEN` **MUST** be set to proper values.
-Otherwise, you might not be able to run your code.
+**吃飼料的注意事項**
+- 兔兔吃飼料時有什麼需要注意的 
 
-#### Run Locally
-You can either setup https server or using `ngrok` as a proxy.
+<img src="https://i.imgur.com/QHvxyvs.png" alt="alt text" width="473" height="221">
+ 
+****
 
-#### a. Ngrok installation
-* [ macOS, Windows, Linux](https://ngrok.com/download)
+### 關於喝水
+<img src="https://i.imgur.com/9FMlks5.jpg" alt="alt text" width="394" height="700">
 
-or you can use Homebrew (MAC)
-```sh
-brew cask install ngrok
-```
+**兔兔一天需水量**  
+- 輸入兔兔『體重』 
+- 可提供兔兔一天的需水量應為多少  
+<img src="https://i.imgur.com/z2JnXQ9.jpg" alt="alt text" width="394" height="700">
 
-**`ngrok` would be used in the following instruction**
+**喝水的注意事項**
+- 兔兔喝水時有什麼需要注意的  
 
-```sh
-ngrok http 8000
-```
+<img src="https://i.imgur.com/Vu1P6Lc.png" alt="alt text" width="473" height="221">
 
-After that, `ngrok` would generate a https URL.
+****
 
-#### Run the sever
+### 關於吃草
 
-```sh
-python3 app.py
-```
+<img src="https://i.imgur.com/YJXTa8r.jpg" alt="alt text" width="394" height="700">
 
-#### b. Servo
+**兔兔適合哪種草**  
+- 輸入兔兔『年齡』  
+- 可提供兔兔適合吃哪一種草  
 
-Or You can use [servo](http://serveo.net/) to expose local servers to the internet.
+<img src="https://i.imgur.com/gkIUM6g.jpg" alt="alt text" width="394" height="700">
+
+**吃草的注意事項**
+- 兔兔吃草時有什麼需要注意的  
+
+<img src="https://i.imgur.com/QHvxyvs.png" alt="alt text" width="473" height="221">
+
+****
+
+### 兔兔の小知識
+
+<img src="https://i.imgur.com/58ReTXw.jpg" alt="alt text" width="394" height="700">
+
+**有關兔兔飲食**  
+- 提供有關兔兔飲食的知識，e.g.,哪些食物兔子可以吃、哪些食物兔子絕對不能吃  
+
+<img src="https://i.imgur.com/0xDluEB.jpg" alt="alt text" width="394" height="700">
+
+**兔兔的肢體語言**  
+- 兔兔的各種肢體語言所代表的意思，e.g.,兔兔後腳站立是什麼意思  
+
+<img src="https://i.imgur.com/kqQPzTo.jpg" alt="alt text" width="394" height="700">
+
+**兔兔冷知識**  
+- 有關兔兔的冷知識，e.g.,世界紀錄中最大隻的兔子有多大  
+
+<img src="https://i.imgur.com/zj81RBu.jpg" alt="alt text" width="394" height="700">
+
+****
+
+### 看看ptt兔版都在討論什麼
+
+- 可取得`PTT看版rabbit`的**最新前5篇**貼文  
+
+<img src="https://i.imgur.com/VBU4bLg.jpg" alt="alt text" width="394" height="700">
+
+****
+
+### fsm圖片
+
+- show出`fsm圖片`  
+
+如下圖  
+
+****
 
 
 ## Finite State Machine
-![fsm](./img/show-fsm.png)
-
-## Usage
-The initial state is set to `user`.
-
-Every time `user` state is triggered to `advance` to another state, it will `go_back` to `user` state after the bot replies corresponding message.
-
-* user
-	* Input: "go to state1"
-		* Reply: "I'm entering state1"
-
-	* Input: "go to state2"
-		* Reply: "I'm entering state2"
-
-## Deploy
-Setting to deploy webhooks on Heroku.
-
-### Heroku CLI installation
-
-* [macOS, Windows](https://devcenter.heroku.com/articles/heroku-cli)
-
-or you can use Homebrew (MAC)
-```sh
-brew tap heroku/brew && brew install heroku
-```
-
-or you can use Snap (Ubuntu 16+)
-```sh
-sudo snap install --classic heroku
-```
-
-### Connect to Heroku
-
-1. Register Heroku: https://signup.heroku.com
-
-2. Create Heroku project from website
-
-3. CLI Login
-
-	`heroku login`
-
-### Upload project to Heroku
-
-1. Add local project to Heroku project
-
-	heroku git:remote -a {HEROKU_APP_NAME}
-
-2. Upload project
-
-	```
-	git add .
-	git commit -m "Add code"
-	git push -f heroku master
-	```
-
-3. Set Environment - Line Messaging API Secret Keys
-
-	```
-	heroku config:set LINE_CHANNEL_SECRET=your_line_channel_secret
-	heroku config:set LINE_CHANNEL_ACCESS_TOKEN=your_line_channel_access_token
-	```
-
-4. Your Project is now running on Heroku!
-
-	url: `{HEROKU_APP_NAME}.herokuapp.com/callback`
-
-	debug command: `heroku logs --tail --app {HEROKU_APP_NAME}`
-
-5. If fail with `pygraphviz` install errors
-
-	run commands below can solve the problems
-	```
-	heroku buildpacks:set heroku/python
-	heroku buildpacks:add --index 1 heroku-community/apt
-	```
-
-	refference: https://hackmd.io/@ccw/B1Xw7E8kN?type=view#Q2-如何在-Heroku-使用-pygraphviz
-
-## Reference
-[Pipenv](https://medium.com/@chihsuan/pipenv-更簡單-更快速的-python-套件管理工具-135a47e504f4) ❤️ [@chihsuan](https://github.com/chihsuan)
-
-[TOC-Project-2019](https://github.com/winonecheng/TOC-Project-2019) ❤️ [@winonecheng](https://github.com/winonecheng)
-
-Flask Architecture ❤️ [@Sirius207](https://github.com/Sirius207)
-
-[Line line-bot-sdk-python](https://github.com/line/line-bot-sdk-python/tree/master/examples/flask-echo)
+![fsm](./fsm.png)
