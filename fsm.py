@@ -47,40 +47,20 @@ class TocMachine(GraphMachine):
         else: 
             return False
     def on_enter_ptt(self, event):
-        title = []
-        url = []
         reply_token = event.reply_token
         message = box_message.show_ptt
+
         url="https://www.ptt.cc/bbs/rabbit/index.html"
         r = requests.get(url)
-        soup = BeautifulSoup(r.text,"html.parser")
-        btn = soup.select('div.btn-group > a')
-        up_page_href = btn[3]['href']
-        next_page_url = 'https://www.ptt.cc' + up_page_href
-        r = requests.get(next_page_url)
         soup = BeautifulSoup(r.text, "html.parser")
         results = soup.select("div.title")
+        title = []
+        url = []
         for item in results:
             a_item = item.select_one("a")
             if a_item:
                 title.append(item.text)
                 url.append('https://www.ptt.cc'+ a_item.get('href'))
-        r = requests.get(url)
-        soup = BeautifulSoup(r.text, "html.parser")
-        results = soup.select("div.title")
-        for item in results:
-            a_item = item.select_one("a")
-            if a_item:
-                title.append(item.text)
-                url.append('https://www.ptt.cc'+ a_item.get('href'))
-
-
-        '''for item in results:
-            a_item = item.select_one("a")
-            #title.append(item.text)
-            if a_item:
-                title.append(item.text)
-                url.append('https://www.ptt.cc'+ a_item.get('href'))'''
         
         sequences = [0, 1, 2, 3, 4]
         for i in sequences:
